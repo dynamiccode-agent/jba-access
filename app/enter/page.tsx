@@ -18,7 +18,7 @@ export default function EnterPage() {
   return (
     <main style={{
       minHeight: "100vh",
-      background: phase === "flash" ? "#ffffff" : "#0A0A0A",
+      background: phase === "flash" ? "#ffffff" : "#0D0812",
       display: "flex", flexDirection: "column", alignItems: "center",
       justifyContent: "center", padding: "2rem", textAlign: "center",
       transition: "background 0.1s", position: "relative", overflow: "hidden"
@@ -81,7 +81,7 @@ export default function EnterPage() {
           {phase === "details" && (
             <div style={{
               marginTop: "1.5rem", paddingTop: "1.5rem",
-              borderTop: "1px solid #1A1A1A", width: "100%", maxWidth: "300px",
+              borderTop: "1px solid #1E0F2E", width: "100%", maxWidth: "300px",
               animation: "fadeIn 0.8s ease-out", display: "flex",
               flexDirection: "column", gap: "0.4rem"
             }}>
@@ -137,7 +137,7 @@ function Particles() {
         <div key={p.id} style={{
           position: "absolute", left: `${p.x}%`, top: `${p.y}%`,
           width: `${p.size}px`, height: `${p.size}px`,
-          borderRadius: "50%", background: "#C9A84C", opacity: p.opacity
+          borderRadius: "50%", background: "#9B6FD4", opacity: p.opacity
         }} />
       ))}
     </div>
