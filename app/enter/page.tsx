@@ -30,6 +30,9 @@ export default function EnterPage() {
           <p className={cormorant.className} style={{
             color: "#C9A84C", fontSize: "0.75rem", letterSpacing: "0.4em", textTransform: "uppercase", opacity: 0.8
           }}>Joe Berry Award</p>
+          <p className={inter.className} style={{
+            color: "#C9A84C", fontSize: "0.55rem", letterSpacing: "0.3em", textTransform: "uppercase", opacity: 0.5, marginTop: "-1.5rem"
+          }}>40th Anniversary</p>
           <div style={{ position: "relative", width: "160px", height: "200px", border: "1px solid #C9A84C33", borderRadius: "4px" }}>
             <ScanLine />
             <div style={{ position: "absolute", top: -1, left: -1, width: "20px", height: "20px", borderTop: "2px solid #C9A84C", borderLeft: "2px solid #C9A84C" }} />
@@ -89,7 +92,7 @@ export default function EnterPage() {
                 JOE BERRY AWARD
               </p>
               <p className={inter.className} style={{ color: "#888", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase" }}>
-                Young Executive Award · Future Industry Leaders
+                Young Executive Award · Future Industry Leaders · 40th Anniversary
               </p>
               <p className={inter.className} style={{ color: "#666", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "0.5rem" }}>
                 Wednesday 11 June 2026
