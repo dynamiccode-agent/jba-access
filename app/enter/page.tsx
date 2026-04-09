@@ -6,14 +6,15 @@ const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "600"
 const inter = Inter({ subsets: ["latin"] });
 
 export default function EnterPage() {
-  const [phase, setPhase] = useState<"scanning" | "flash" | "granted" | "details">("scanning");
+  const [phase, setPhase] = useState<"welcome" | "scanning" | "flash" | "granted" | "details">("welcome");
 
-  useEffect(() => {
+  const handleEnter = () => {
+    setPhase("scanning");
     const t1 = setTimeout(() => setPhase("flash"), 2200);
     const t2 = setTimeout(() => setPhase("granted"), 2400);
     const t3 = setTimeout(() => setPhase("details"), 3600);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-  }, []);
+  };
 
   return (
     <main style={{
@@ -24,6 +25,46 @@ export default function EnterPage() {
       transition: "background 0.1s", position: "relative", overflow: "hidden"
     }}>
       <Particles />
+
+      {phase === "welcome" && (
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem", maxWidth: "300px", animation: "fadeIn 0.8s ease-out" }}>
+          <p className={cormorant.className} style={{
+            color: "#C9A84C", fontSize: "0.75rem", letterSpacing: "0.4em", textTransform: "uppercase", opacity: 0.7
+          }}>Joe Berry Award · 40th Anniversary</p>
+
+          <p className={cormorant.className} style={{
+            color: "#F5F5F5", fontSize: "2rem", fontWeight: 600, lineHeight: 1.2, letterSpacing: "0.05em"
+          }}>Welcome.</p>
+
+          <p className={inter.className} style={{
+            color: "#888", fontSize: "0.75rem", letterSpacing: "0.1em", lineHeight: 1.7, textTransform: "uppercase"
+          }}>
+            Tap the button below<br />when you arrive at the door
+          </p>
+
+          <button
+            onClick={handleEnter}
+            className={inter.className}
+            style={{
+              marginTop: "0.5rem",
+              background: "transparent",
+              border: "1px solid #C9A84C",
+              color: "#C9A84C",
+              padding: "1rem 2.5rem",
+              fontSize: "0.7rem",
+              letterSpacing: "0.35em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              borderRadius: "2px",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "#C9A84C20"; }}
+            onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "transparent"; }}
+          >
+            I&apos;ve Arrived
+          </button>
+        </div>
+      )}
 
       {phase === "scanning" && (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem" }}>
@@ -43,7 +84,10 @@ export default function EnterPage() {
           <p className={inter.className} style={{
             color: "#C9A84C", fontSize: "0.65rem", letterSpacing: "0.35em",
             textTransform: "uppercase", animation: "pulse 1.5s ease-in-out infinite"
-          }}>Verifying Access...</p>
+          }}>Scan the QR code at the door</p>
+          <p className={inter.className} style={{
+            color: "#444", fontSize: "0.55rem", letterSpacing: "0.2em", textTransform: "uppercase", marginTop: "-1.5rem"
+          }}>Your password will appear</p>
         </div>
       )}
 
